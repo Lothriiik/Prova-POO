@@ -109,7 +109,16 @@ public class Parking {
 }
 
 ```
+#### Resultado:
+```java
+Tem um total de 16 pessoas no estacionamento e um total de 5 carros no estacionamento.
+SUV: 5 pessoas.
+GOL: 3 pessoas.
+FERRARI: 2 pessoas.
+MUSTANG: 2 pessoas.
+CELTA: 4 pessoas.
 
+```
 ### **Exercício 3:** 
 
 Suponha que você irá desenvolver um novo aplicativo. O aplicativo
