@@ -67,9 +67,8 @@ public class Shop {
         return this.Produtos;
 	}
 
-    private String setCompras(){
+    void setCompras(){
         Compras.add(Produtos);
-        return Produtos;
     }
 
     private double setValor(){
@@ -92,20 +91,16 @@ public class Shop {
 
     }
 
-    public String getValor_Produtos(){
+    void getValor_Produtos(){
         System.out.printf("Os Produtos Vendidos são :\n   Arroz    R$: 4,00\n   Carne    R$: 10,00\n   Feijao   R$: 5,00\n   Macarrao R$: 3,00\n   Sal      R$: 2,00\n\n");
         
-    
-        return Produtos;
     }
-    public double getValor_Compra(){
+    void getValor_Compra(){
         System.out.printf("A compra deu um valor total de R$: %.2f%n", Valor);
-        return Valor;
     }
 
-    public ArrayList<String> getProdutos(){
+    void getProdutos(){
         System.out.println("Os Produtos no carrinho  são: "+ Compras);
-        return Compras;
     }
 
 }
@@ -144,7 +139,7 @@ package prova.questao2;
 
 public class Main {
     public static void main(String[] args) {
-        estacio est = new estacio();
+        Parking est = new Parking();
         est.setCarros_Pessoas("SUV", 5);
 
         est.setCarros_Pessoas("GOL", 3);
@@ -158,7 +153,7 @@ public class Main {
         est.getTotal_Pessoas();
 
         est.getEstacionamento();
-    }  
+    }
 }
 
 ```
@@ -171,15 +166,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Parking {
-    private String Estacionamento;
+    
     private String Carros;
     private Integer Pessoas;
-    private String key;
-
+    
     Integer Total_Pessoas = 0;
     Integer Total_Carros = 0;
     
-
     Map<String, Integer> estacionamento = new HashMap<>();
 
     public String setCarros_Pessoas(String Carros2, Integer Pessoas2) {
@@ -191,25 +184,21 @@ public class Parking {
         return this.Carros;
 	}
 
-    public Integer getTotal_Pessoas(){
+    void getTotal_Pessoas(){
         System.out.println("Tem um total de " + Total_Pessoas + " pessoas no estacionamento e um total de " + Total_Carros + " carros no estacionamento.");
-        return Total_Pessoas;
+        
     }
 
-    
-    public String setEstacionamento(){
+    void setEstacionamento(){
         estacionamento.put(Carros, Pessoas);
-        return Estacionamento;
+        
     }
 
-
-    public String getEstacionamento(){
+    void getEstacionamento(){
         for(String key : estacionamento.keySet()){
             System.out.println(key + ": " + estacionamento.get(key)+ " pessoas.");
         }
-		return Estacionamento;
     }
-
 }
 
 ```
@@ -235,11 +224,99 @@ ser possível adicionar novos métodos de login no futuro.
 #### main:
 
 ```java
+package prova.questao3;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Login login = new Login();
+        System.out.println("Escolha o metodo de login (Formulario/Google/Facebook/iCloud):");
+        login.EscolherPlataforma("Google");
+    }
+
+}
+
 
 ```
-#### Employee:
+#### Logins:
 ```java
+package prova.questao3;
 
+interface Plataforma {
+
+    void pagar(Login Login);
+
+}
+class Formulario implements Plataforma {
+
+    @Override
+    public void pagar(Login Login) {
+        System.out.println("Escolheu o método de login pelo Formulário.");
+    }
+}
+
+class Google implements Plataforma {
+
+    @Override
+    public void pagar(Login Login) {
+        System.out.println("Escolheu o método de login pelo Google.");
+    }
+}
+
+class Facebook implements Plataforma {
+
+    @Override
+    public void pagar(Login Login) {
+        System.out.println("Escolheu o método de login pelo Facebook.");
+    }
+}
+
+class iCloud implements Plataforma {
+
+    @Override
+    public void pagar(Login Login) {
+        System.out.println("Escolheu o método de login pelo iCloud");
+    }
+}
+
+```
+#### ProcessarLogins:
+```java
+package prova.questao3;
+
+
+class Login {
+   
+    String Escolha;
+   
+    void processarPlataforma(Plataforma Plataforma) {
+        Plataforma.pagar(this);
+    }
+    void EscolherPlataforma(String Escolha){
+        if (Escolha == "Formulario" ){
+            processarPlataforma(new Formulario());
+        }
+        if (Escolha == "Google" ){
+            processarPlataforma(new Google());
+        }
+        if (Escolha == "Facebook" ){
+            processarPlataforma(new Facebook());
+        }
+        if (Escolha == "iCloud" ){
+            processarPlataforma(new iCloud());
+        }
+        if (Escolha != "iCloud" && Escolha != "Facebook" && Escolha != "Google" && Escolha != "Formulario"){
+            System.out.println("Método de login inexistente.");
+        }
+        
+    }
+}
+
+```
+#### Resultado:
+```java
+Escolha o metodo de login (Formulario/Google/Facebook/iCloud):
+Escolheu o método de login pelo Google.
 ```
 
 
@@ -251,15 +328,105 @@ com a flexibilidade de optar por um dos métodos de pagamento. Além
 disso, deve ser possível adicionar novos métodos de pagamento no
 futuro.
 
-#### main:
+#### Main:
 
 ```java
+package prova.questao4;
+
+import java.math.BigDecimal;
+
+public class Main {
+
+    public static void main(String[] args) {
+        System.out.println("Digite o valor do pagamento:");
+        BigDecimal valor = new BigDecimal("130.89");
+        Compra compra = new Compra(valor);
+        System.out.println("Escolha a forma de pagamento (Pix/Credito/Boleto):");
+        compra.EscolherPagamento("Pix");
+    }
+
+}
 
 ```
-#### :
+#### Pagamentos:
 
 ```java
+package prova.questao4;
 
+interface Pagamento {
+
+    void pagar(Compra compra);
+
+}
+
+class Px implements Pagamento {
+
+    @Override
+    public void pagar(Compra compra) {
+        System.out.println("Realizou o pagamento pelo Pix no valor de R$: " + compra.valor);
+    }
+}
+
+class CartaoCredito implements Pagamento {
+
+    @Override
+    public void pagar(Compra compra) {
+        System.out.println("Realizou o pagamento pelo Crédito no valor de R$: " + compra.valor);
+    }
+}
+
+class Boleto implements Pagamento {
+
+    @Override
+    public void pagar(Compra compra) {
+        System.out.println("Realizou o pagamento pelo Boleto no valor de R$: " + compra.valor);
+    }
+}
+
+```
+#### ProcessatPagamentos :
+
+```java
+package prova.questao4;
+
+import java.math.BigDecimal;
+
+class Compra {
+   
+    BigDecimal valor;
+    String Escolha;
+   
+    public Compra(BigDecimal valor) {
+        this.valor = valor;
+    }
+    
+    void processarCompra(Pagamento Pagamento) {
+        Pagamento.pagar(this);
+    }
+    void EscolherPagamento(String Escolha){
+        if (Escolha == "Pix" ){
+            processarCompra(new Px());
+        }
+        if (Escolha == "Credito" ){
+            processarCompra(new CartaoCredito());
+        }
+        if (Escolha == "Boleto" ){
+            processarCompra(new Boleto());
+        }
+        if(Escolha != "Credito" && Escolha != "Boleto" && Escolha != "Pix" ){
+            System.out.println("Método de pagamento inexistente.");
+        }
+        
+    }
+}
+
+```
+#### Resultado:
+
+```java
+Digite o valor do pagamento:
+Escolha a forma de pagamento (Pix/Credito/Boleto):
+Realizou o pagamento pelo Pix no valor de R$: 130.89
 ```
 
 ### **Exercício 5:** 
