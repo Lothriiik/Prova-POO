@@ -238,48 +238,6 @@ public class Main {
 
 
 ```
-#### Logins:
-```java
-package prova.questao3;
-
-interface Plataforma {
-
-    void pagar(Login Login);
-
-}
-class Formulario implements Plataforma {
-
-    @Override
-    public void pagar(Login Login) {
-        System.out.println("Escolheu o método de login pelo Formulário.");
-    }
-}
-
-class Google implements Plataforma {
-
-    @Override
-    public void pagar(Login Login) {
-        System.out.println("Escolheu o método de login pelo Google.");
-    }
-}
-
-class Facebook implements Plataforma {
-
-    @Override
-    public void pagar(Login Login) {
-        System.out.println("Escolheu o método de login pelo Facebook.");
-    }
-}
-
-class iCloud implements Plataforma {
-
-    @Override
-    public void pagar(Login Login) {
-        System.out.println("Escolheu o método de login pelo iCloud");
-    }
-}
-
-```
 #### ProcessarLogins:
 ```java
 package prova.questao3;
@@ -290,7 +248,7 @@ class Login {
     String Escolha;
    
     void processarPlataforma(Plataforma Plataforma) {
-        Plataforma.pagar(this);
+        Plataforma.escolheu(this);
     }
     void EscolherPlataforma(String Escolha){
         if (Escolha == "Formulario" ){
@@ -313,6 +271,49 @@ class Login {
 }
 
 ```
+#### Logins:
+```java
+package prova.questao3;
+
+interface Plataforma {
+
+    void escolheu(Login Login);
+
+}
+class Formulario implements Plataforma {
+
+    @Override
+    public void escolheu(Login Login) {
+        System.out.println("Escolheu o método de login pelo Formulário.");
+    }
+}
+
+class Google implements Plataforma {
+
+    @Override
+    public void escolheu(Login Login) {
+        System.out.println("Escolheu o método de login pelo Google.");
+    }
+}
+
+class Facebook implements Plataforma {
+
+    @Override
+    public void escolheu(Login Login) {
+        System.out.println("Escolheu o método de login pelo Facebook.");
+    }
+}
+
+class iCloud implements Plataforma {
+
+    @Override
+    public void escolheu(Login Login) {
+        System.out.println("Escolheu o método de login pelo iCloud");
+    }
+}
+
+```
+
 #### Resultado:
 ```java
 Escolha o metodo de login (Formulario/Google/Facebook/iCloud):
@@ -345,6 +346,43 @@ public class Main {
         compra.EscolherPagamento("Pix");
     }
 
+}
+
+```
+#### ProcessarPagamentos :
+
+```java
+package prova.questao4;
+
+import java.math.BigDecimal;
+
+class Compra {
+   
+    BigDecimal valor;
+    String Escolha;
+   
+    public Compra(BigDecimal valor) {
+        this.valor = valor;
+    }
+    
+    void processarCompra(Pagamento Pagamento) {
+        Pagamento.pagar(this);
+    }
+    void EscolherPagamento(String Escolha){
+        if (Escolha == "Pix" ){
+            processarCompra(new Px());
+        }
+        if (Escolha == "Credito" ){
+            processarCompra(new CartaoCredito());
+        }
+        if (Escolha == "Boleto" ){
+            processarCompra(new Boleto());
+        }
+        if(Escolha != "Credito" && Escolha != "Boleto" && Escolha != "Pix" ){
+            System.out.println("Método de pagamento inexistente.");
+        }
+        
+    }
 }
 
 ```
@@ -384,43 +422,7 @@ class Boleto implements Pagamento {
 }
 
 ```
-#### ProcessatPagamentos :
 
-```java
-package prova.questao4;
-
-import java.math.BigDecimal;
-
-class Compra {
-   
-    BigDecimal valor;
-    String Escolha;
-   
-    public Compra(BigDecimal valor) {
-        this.valor = valor;
-    }
-    
-    void processarCompra(Pagamento Pagamento) {
-        Pagamento.pagar(this);
-    }
-    void EscolherPagamento(String Escolha){
-        if (Escolha == "Pix" ){
-            processarCompra(new Px());
-        }
-        if (Escolha == "Credito" ){
-            processarCompra(new CartaoCredito());
-        }
-        if (Escolha == "Boleto" ){
-            processarCompra(new Boleto());
-        }
-        if(Escolha != "Credito" && Escolha != "Boleto" && Escolha != "Pix" ){
-            System.out.println("Método de pagamento inexistente.");
-        }
-        
-    }
-}
-
-```
 #### Resultado:
 
 ```java
@@ -442,15 +444,94 @@ fecha a conexão. Sua solução deve ser capaz de utilizar qualquer uma
 das formas supracitadas.
 
 
-#### main:
+#### Main:
 
 ```java
+package prova.questao5;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Escolhendo escolhendo = new Escolhendo();
+        System.out.println("Escolha a forma de conexão Bluetooth (Serial / Pacote):");
+        escolhendo.EscolherConexao("Pacote");
+    }
+
+}
+
 
 ```
-#### Client:
+#### EscolhendoConexão:
 
 ```java
+package prova.questao5 ;
 
+class Escolhendo{
+   
+    String Escolha;
+   
+    void iniciarConexao(){
+        System.out.println("Iniciando conexão...");
+
+    }
+    void EncerrarConexao(){
+        System.out.println("Encerrando conexão");
+
+    }
+    void processarConexao(Conexao Conexao) {
+        iniciarConexao();
+        Conexao.escolheu(this);
+        EncerrarConexao();
+    }
+    void EscolherConexao(String Escolha){
+        if (Escolha == "Serial" ){
+            processarConexao(new Serial());
+        }
+        if (Escolha == "Pacote" ){
+            processarConexao(new Pacote());
+        }
+        if(Escolha != "Pacote" && Escolha != "Serial" ){
+            System.out.println("Método de Conexão inexistente.");
+        }
+    }
+}
+
+```
+#### Conexões:
+
+```java
+package prova.questao5;
+
+interface Conexao {
+
+    void escolheu(Escolhendo escolhendo);
+
+}
+
+class Serial implements Conexao {
+
+    @Override
+    public void escolheu(Escolhendo escolhendo) {
+        System.out.println("Processando os dados na forma de comunicação serial.");
+    }
+}
+
+class Pacote implements Conexao {
+
+    @Override
+    public void escolheu(Escolhendo escolhendo) {
+        System.out.println("Processando os dados na forma de comunicação baseado em pacotes.");
+    }
+}
+
+```
+#### Resultado:
+
+```java
+Escolha a forma de conexão Bluetooth (Serial / Pacote):
+Iniciando conexão...
+Processando os dados na forma de comunicação baseado em pacotes.
+Encerrando conexão.
 ```
 
 
