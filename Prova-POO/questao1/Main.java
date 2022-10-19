@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         Shop shop = new Shop();
         shop.getValor_Produtos();
-
+//informando o produto que quer
         shop.setProduto("Arroz");
 
         shop.setProduto("Arroz");
@@ -18,9 +18,9 @@ public class Main {
         shop.setProduto("Macarrao");
 
         shop.setProduto("Sal");
-
+//vai informar o valor da compra
         shop.getValor_Compra();
-
+// vai informar os produtos no carrinho
         shop.getProdutos();
 
     }
