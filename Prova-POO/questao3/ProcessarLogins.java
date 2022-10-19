@@ -6,8 +6,10 @@ class Login {
     String Escolha;
    
     void processarPlataforma(Plataforma Plataforma) {
+ // vai iniciar os procedimento apos escolher a plataforma.
         Plataforma.escolheu(this);
     }
+ //vai definir qual plataforma escolheu
     void EscolherPlataforma(String Escolha){
         if (Escolha == "Formulario" ){
             processarPlataforma(new Formulario());
