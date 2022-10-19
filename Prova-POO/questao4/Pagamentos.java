@@ -5,7 +5,7 @@ interface Pagamento {
     void pagar(Compra compra);
 
 }
-
+// dependendo da forma de pagamento que escolheu vai iniciar o procedimento do respectivo metodo.
 class Px implements Pagamento {
 
     @Override
