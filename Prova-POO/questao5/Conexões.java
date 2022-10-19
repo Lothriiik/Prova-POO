@@ -5,7 +5,7 @@ interface Conexao {
     void escolheu(Escolhendo escolhendo);
 
 }
-
+// dependendo da conexao vai ter o seu respectivo metodo de processamento.
 class Serial implements Conexao {
 
     @Override
