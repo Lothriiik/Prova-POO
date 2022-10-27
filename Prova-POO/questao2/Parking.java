@@ -8,22 +8,22 @@ public class Parking {
     private String Carros;
     private Integer Pessoas;
     
-    Integer Total_Pessoas = 0;
-    Integer Total_Carros = 0;
+    Integer TotalPessoas = 0;
+    Integer TotalCarros = 0;
     
     Map<String, Integer> estacionamento = new HashMap<>();
 //vai informar o carro e  quantas pessoa tem nele  e adicionar ao estacionamento.
-    public String setCarros_Pessoas(String Carros2, Integer Pessoas2) {
+    public String setCarrosPessoas(String Carros2, Integer Pessoas2) {
         this.Carros = Carros2;
         this.Pessoas = Pessoas2;
-        this.Total_Pessoas += Pessoas2;
-        this.Total_Carros +=1;
+        this.TotalPessoas += Pessoas2;
+        this.TotalCarros +=1;
 // adiciona ao estacionamento.
         setEstacionamento();
         return this.Carros;
 	}
 // vai informar o total de pessoas e carros no estaciomaneto.
-    void getTotal_Pessoas(){
+    void getTotalPessoas(){
         System.out.println("Tem um total de " + Total_Pessoas + " pessoas no estacionamento e um total de " + Total_Carros + " carros no estacionamento.");
         
     }
