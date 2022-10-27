@@ -3,7 +3,7 @@ package prova.questao1;
 public class Main {
     public static void main(String[] args) {
         Shop shop = new Shop();
-        shop.getValor_Produtos();
+        shop.getValorProdutos();
 //informando o produto que quer
         shop.setProduto("Arroz");
 
@@ -19,7 +19,7 @@ public class Main {
 
         shop.setProduto("Sal");
 //vai informar o valor da compra
-        shop.getValor_Compra();
+        shop.getValorCompra();
 // vai informar os produtos no carrinho
         shop.getProdutos();
 
