@@ -3,17 +3,17 @@ package prova.questao2;
 public class Main {
     public static void main(String[] args) {
         Parking est = new Parking();
-        est.setCarros_Pessoas("SUV", 5);
+        est.setCarrosPessoas("SUV", 5);
 
-        est.setCarros_Pessoas("GOL", 3);
+        est.setCarrosPessoas("GOL", 3);
 
-        est.setCarros_Pessoas("CELTA", 4);
+        est.setCarrosPessoas("CELTA", 4);
 
-        est.setCarros_Pessoas("FERRARI", 2);
+        est.setCarrosPessoas("FERRARI", 2);
 
-        est.setCarros_Pessoas("MUSTANG", 2);
+        est.setCarrosPessoas("MUSTANG", 2);
         
-        est.getTotal_Pessoas();
+        est.getTotalPessoas();
 
         est.getEstacionamento();
 
