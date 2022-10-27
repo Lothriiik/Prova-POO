@@ -42,12 +42,12 @@ public class Shop {
 
     }
 //vai informar os produtos
-    void getValor_Produtos(){
+    void getValorProdutos(){
         System.out.printf("Os Produtos Vendidos são :\n   Arroz    R$: 4,00\n   Carne    R$: 10,00\n   Feijao   R$: 5,00\n   Macarrao R$: 3,00\n   Sal      R$: 2,00\n\n");
         
     }
 //vai informar o valor total da compra
-    void getValor_Compra(){
+    void getValorCompra(){
         System.out.printf("A compra deu um valor total de R$: %.2f%n", Valor);
     }
 //vai informar os produtos que estão no carrinho
